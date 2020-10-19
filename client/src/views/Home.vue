@@ -30,7 +30,7 @@
 </template>
 
 <script>
-
+import Swal from 'sweetalert2'
 export default {
   mounted () {
     if (!localStorage.getItem('access_token')) {
@@ -47,14 +47,41 @@ export default {
   methods: {
     addFavorite (id) {
       this.$store.dispatch('addFavorite', id)
+        .then(data => {
+          Swal.fire({
+            position: 'top-end',
+            icon: 'success',
+            title: 'Add Favorite Success',
+            showConfirmButton: false,
+            timer: 1500
+          })
+        })
     },
     goToFavorite () {
       this.$router.push('/favorite')
     },
     logout () {
-      this.$store.dispatch('logout')
-        .then(() => {
-          this.$router.push('/login')
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will have to log in again!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, log me out!'
+      })
+        .then((result) => {
+          if (result.isConfirmed) {
+            this.$store.dispatch('logout')
+              .then(() => {
+                this.$router.push('/login')
+              })
+            Swal.fire(
+              'Logged Out!',
+              'You have been logged out.',
+              'success'
+            )
+          }
         })
     }
   }

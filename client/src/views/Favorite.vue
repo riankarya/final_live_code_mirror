@@ -32,6 +32,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 export default {
   mounted () {
     if (!localStorage.getItem('access_token')) {
@@ -50,18 +51,54 @@ export default {
       this.$router.push('/')
     },
     deletePlant (id) {
-      this.$store.dispatch('deletePlant', id)
-        .then(data => {
-          this.$store.dispatch('fetchFavorite')
-        })
-        .catch(err => {
-          console.log(err)
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      })
+        .then((result) => {
+          if (result.isConfirmed) {
+            this.$store.dispatch('deletePlant', id)
+              .then(data => {
+                this.$store.dispatch('fetchFavorite')
+              })
+              .catch(err => {
+                console.log(err)
+              })
+            Swal.fire(
+              'Deleted!',
+              'Your file has been deleted.',
+              'success'
+            )
+          }
         })
     },
     logout () {
-      this.$store.dispatch('logout')
-        .then(() => {
-          this.$router.push('/login')
+      Swal.fire({
+        title: 'Are you sure?',
+        text: 'You will have to log in again!',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, log me out!'
+      })
+        .then((result) => {
+          if (result.isConfirmed) {
+            this.$store.dispatch('logout')
+              .then(() => {
+                this.$router.push('/login')
+              })
+            Swal.fire(
+              'Logged Out!',
+              'You have been logged out.',
+              'success'
+            )
+          }
         })
     }
   }
