@@ -1,0 +1,20 @@
+[
+    {
+        "id": 1,
+        "name": "Happy Cactus",
+        "description": "I Can Store An Unbelievable Amount Of Water In A Short Time",
+        "imgUrl": "https://images.vexels.com/media/users/3/157784/isolated/preview/bf2d571488a39e11419799c2a29a010d-cute-cactus-by-vexels.png"
+    },
+    {
+        "id": 2,
+        "name": "Cute Aloe Vera",
+        "description": "Aloe Vera is one of the oldest herbal remedies",
+        "imgUrl": "https://www.seekpng.com/png/full/159-1596512_kawaii-doodles-cactus-stickers-kawaii-cute-tumblr-kawaii.png"
+    },
+    {
+        "id": 3,
+        "name": "Sun Flower",
+        "description": "I Have Traveled To Space",
+        "imgUrl": "https://library.kissclipart.com/20180911/veq/kissclipart-cute-sunflower-clipart-christian-clip-art-clip-art-c7f71723eb4ccec2.png"
+    }
+]
