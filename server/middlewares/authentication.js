@@ -4,7 +4,6 @@ const { User } = require('../models')
 async function authentication(req, res, next) {
     try {
         req.loggedUser = verifyToken(req.headers.access_token)
-        console.log(req.loggedUser, 'ASUP TI AUTH')
         const email = req.loggedUser.email
         let user = await User.findOne({where: {email}})
         if (!user) throw ({name: 'AuthenticationError', msg: 'Not Authenticated'})
