@@ -1,4 +1,4 @@
-# Phase 2 - Live Code Final
+# Phase 2 - Live Code Final_mirror
 
 ## HacktivGarden
 Pada LiveCode kali ini kalian akan membuat sebuah website yang dapat menampilkan list plants. Kalian dapat menambahkan plant tersebut ke dalam list menu favorite.
